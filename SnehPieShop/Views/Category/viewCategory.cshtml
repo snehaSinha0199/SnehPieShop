@@ -1,0 +1,19 @@
+﻿
+
+ <h1>Categories</h1>
+
+@foreach (var Category in Model)
+{
+   
+
+     <h3>
+                    <a asp-action="CategoryList" asp-controller="Category" asp-route-id="@Category.CategoryId">@Category.CategoryName</a>
+                </h3>
+   
+    <p>
+        @Category.Description;
+    </p>
+
+  
+}
+
