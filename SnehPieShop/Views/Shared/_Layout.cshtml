@@ -35,9 +35,6 @@
                          <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Pie" asp-action="List">List</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="viewCategory">Category</a>
-                        </li>
                        
                          <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Pie" asp-action="PiesOfTheWeek">Pieoftheweek</a>
@@ -52,27 +49,18 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Cart Item</a>
                         </li>
                         
-                         <li class="nav-item">
+                       
                      <partial name="_LoginPartial">
-              </li>
-
-                   <div class="dropdown space">
-                    <li class="btncolor text-light btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                      Category
-                    </li>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
-                      <li><a class="dropdown-item" asp-controller="Category" asp-action="Category1"  >Fruit pies</a></li>
-                      <li><a class="dropdown-item" asp-controller="Category" asp-action="Category2" >Cheese cakes</a></li>
-                      <li><a class="dropdown-item" asp-controller="Category" asp-action="Category3" >Seasonal pies</a></li>
-                    </ul>
+            
+                    @await Component.InvokeAsync("CategoryMenu")
+                     @await Component.InvokeAsync("CategoryMenuNew")
                 </div>
 
                 </div>
-                <nav class="navbar navbar-light">
- 
-  
-</nav>
+                
+</ul>
+      
+    </div>
             </div>
 
 

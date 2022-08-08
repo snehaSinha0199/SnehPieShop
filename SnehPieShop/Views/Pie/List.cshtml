@@ -11,7 +11,9 @@
                 <h3 class="pull-right">@pie.Price.ToString("c")</h3>
                 <h3>
                     <a asp-action="Details" asp-controller="Pie" asp-route-id="@pie.PieId">@pie.Name</a>
-               @*<button  ><a asp-action="AddToCart" asp-route-id="">AddToCart</a> |</button>  *@
+                      <td><a asp-controller="Pie" asp-action="Remove" asp-route-PieId="@pie.PieId">Remove</a></td>
+                       <td><a asp-controller="Pie" asp-action="Update" asp-route-id="@pie.PieId">Edit</a></td>
+               <button  > <a asp-controller="Order" asp-action="AddToCart" asp-route-id="id">AddToCart</a> |</button>  
                 </h3>
             </div>
                 <h3>
@@ -22,7 +24,14 @@
 
         </div>
     <div>
-    <a asp-action="List">Back to List</a>
+    
+    
+    
+
 </div>
+
 }
+<a asp-action="List">Back to List</a>
+    <a asp-action="Create">Create pies</a>
+    
 

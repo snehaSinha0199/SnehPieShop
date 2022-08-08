@@ -13,13 +13,13 @@ namespace SnehaPieShop.Controllers
             _pieRepository = pieRepository;
         }
 
-        public IActionResult Add(int id)
+        public IActionResult AddToCart(int id)
         {
-            Pie pies = _pieRepository.AllPies.FirstOrDefault(p => p.PieId == id);
+            var pies = _pieRepository.AllPies.FirstOrDefault(p => p.PieId == id);
 
-            Order order = new Order();
-            order.PieId = pies.PieId;
-            order.PieName = pies.Name;
+           // Order order = new Order();
+           // order.PieId = pies.PieId;
+           // order.PieName = pies.Name;
 
           //  int result = _pieRepository.CreateOrder(order);
             return RedirectToAction("List");

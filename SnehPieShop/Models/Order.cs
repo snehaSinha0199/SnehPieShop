@@ -5,7 +5,7 @@ namespace SnehaPieShop.Models
     public class Order
     {
         public int OrderId { get; set; }
-        public int PieId { get; set; }
+        public Pie PieId { get; set; }
 
         public string PieName { get; set; }
         public IEnumerable<Pie> pies { get; set; }

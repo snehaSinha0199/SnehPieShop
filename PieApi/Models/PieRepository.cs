@@ -1,16 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SnehaPieShop.Models;
-
-namespace SnehPieShop.Models
+﻿namespace PieApi.Models
 {
     public class PieRepository :IPieRepository
     {
+       
         private readonly ICategoryRepository _categoryRepository;
         private AppDbContext _appDbContext;
 
-        public PieRepository(ICategoryRepository categoryRepository,AppDbContext appDbContext)
+        public PieRepository(ICategoryRepository categoryRepository, AppDbContext appDbContext)
         {
-                _categoryRepository= categoryRepository;
+            _categoryRepository = categoryRepository;
             _appDbContext = appDbContext;
         }
 
@@ -20,14 +18,8 @@ namespace SnehPieShop.Models
 
         public Pie GetPieById(int pieId)
         {
-            return _appDbContext.Pies.FirstOrDefault(s => s.PieId == pieId);
-                
-        }
-        public int CreateOrder(Order order)
-        {
+            return this.AllPies.FirstOrDefault(p => p.PieId == pieId);
 
-         //   _appDbContext.order.Add(order);
-            return _appDbContext.SaveChanges();
         }
         public int CreatePies(Pie pie)
         {

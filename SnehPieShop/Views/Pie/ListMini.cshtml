@@ -1,19 +1,15 @@
 ﻿@using SnehaPieShop.ViewModels
-@model PieListViewModel
 
-<h1>@Model.CurrentCategory</h1>
- @foreach (var pie in Model.pies)
+@model IEnumerable<SnehaPieShop.Models.PieMini>
+ @foreach (var pie in Model)
 {
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
-            <img src="@pie.ImageThumbnailUrl" alt="">
+            
             <div class="caption">
                 <h3 class="pull-right">@pie.Price.ToString("c")</h3>
                 <h3>
                     <a asp-action="Details" asp-controller="Pie" asp-route-id="@pie.PieId">@pie.Name</a>
-                    <td><a asp-controller="Pie" asp-action="Remove" asp-route-id="@pie.PieId">Remove</a></td>
-                       <td><a asp-controller="Pie" asp-action="Update" asp-route-id="@pie.PieId">Edit</a></td>
-
                @*<button  ><a asp-action="AddToCart" asp-route-id="">AddToCart</a> |</button>  *@
                 </h3>
             </div>

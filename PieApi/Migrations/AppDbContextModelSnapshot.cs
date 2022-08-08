@@ -2,19 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SnehaPieShop.Models;
+using PieApi.Models;
 
 #nullable disable
 
-namespace SnehaPieShop.Migrations
+namespace PieApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220725045537_InitialMigration")]
-    partial class InitialMigration
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,62 +21,7 @@ namespace SnehaPieShop.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("SnehaPieShop.Models.Team", b =>
-                {
-                    b.Property<int>("TeamId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamId"), 1L, 1);
-
-                    b.Property<string>("ImageThumbnailUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShortDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TeamId");
-
-                    b.ToTable("team");
-
-                    b.HasData(
-                        new
-                        {
-                            TeamId = 1,
-                            ImageThumbnailUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/applepiesmall.jpg",
-                            Name = "Sneha sinha",
-                            ShortDescription = ""
-                        },
-                        new
-                        {
-                            TeamId = 2,
-                            ImageThumbnailUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/applepiesmall.jpg",
-                            Name = "Vaibhav Bhatngara",
-                            ShortDescription = "Hard"
-                        },
-                        new
-                        {
-                            TeamId = 3,
-                            ImageThumbnailUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/applepiesmall.jpg",
-                            Name = "Subhash Gurjar",
-                            ShortDescription = "working"
-                        },
-                        new
-                        {
-                            TeamId = 4,
-                            ImageThumbnailUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/applepiesmall.jpg",
-                            Name = "Simran singh",
-                            ShortDescription = "Smart"
-                        });
-                });
-
-            modelBuilder.Entity("SnehPieShop.Models.Category", b =>
+            modelBuilder.Entity("PieApi.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -119,7 +62,7 @@ namespace SnehaPieShop.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SnehPieShop.Models.Pie", b =>
+            modelBuilder.Entity("PieApi.Models.Pie", b =>
                 {
                     b.Property<int>("PieId")
                         .ValueGeneratedOnAdd()
@@ -179,7 +122,7 @@ namespace SnehaPieShop.Migrations
                             ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/applepie.jpg",
                             InStock = true,
                             IsPieOfTheWeek = true,
-                            LongDescription = " Danishp.",
+                            LongDescription = " The first apple pie recipe was printed over 630 years ago in England in 1381. The list of ingredients included good apples, good spices, figs, raisins, pears, saffron, and cofyn (a type of pastry crust). 10. Early English apple pies had no sugar because sugar was very expensive.",
                             Name = "Apple Pie",
                             Price = 12.95m,
                             ShortDescription = "Our famous apple pies!"
@@ -192,7 +135,7 @@ namespace SnehaPieShop.Migrations
                             ImageThumbnailUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/blueberrycheesecakesmall.jpg",
                             ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/blueberrycheesecake.jpg",
                             InStock = true,
-                            IsPieOfTheWeek = false,
+                            IsPieOfTheWeek = true,
                             LongDescription = "Icing carrot cake jelly-o cheesecake. Sweet roll marzipan marshmallow toffee brownie brownie candy tootsie roll. Chocolate cake gingerbread tootsie roll oat cake pie chocolate bar cookie dragée brownie. Lollipop cotton candy cake bear claw oat cake. Dragée candy canes dessert tart. Marzipan dragée gummies lollipop jujubes chocolate bar candy canes. Icing gingerbread chupa chups cotton candy cookie sweet icing bonbon gummies. Gummies lollipop brownie biscuit danish chocolate cake. Danish powder cookie macaroon chocolate donut tart. Carrot cake dragée croissant lemon drops liquorice lemon drops cookie lollipop toffee. Carrot cake carrot cake liquorice sugar plum topping bonbon pie muffin jujubes. Jelly pastry wafer tart caramels bear claw. Tiramisu tart pie cake danish lemon drops. Brownie cupcake dragée gummies.",
                             Name = "Blueberry Cheese Cake",
                             Price = 18.95m,
@@ -326,9 +269,9 @@ namespace SnehaPieShop.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SnehPieShop.Models.Pie", b =>
+            modelBuilder.Entity("PieApi.Models.Pie", b =>
                 {
-                    b.HasOne("SnehPieShop.Models.Category", "Category")
+                    b.HasOne("PieApi.Models.Category", "Category")
                         .WithMany("Pies")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -337,7 +280,7 @@ namespace SnehaPieShop.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("SnehPieShop.Models.Category", b =>
+            modelBuilder.Entity("PieApi.Models.Category", b =>
                 {
                     b.Navigation("Pies");
                 });

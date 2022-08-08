@@ -15,7 +15,7 @@ namespace SnehaPieShop.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Pie> Pies { get; set; }
 
-       // public DbSet<Order> order { get; set; }
+        public DbSet<Order> order { get; set; }
 
 
         public DbSet<Team> team { get; set; }
